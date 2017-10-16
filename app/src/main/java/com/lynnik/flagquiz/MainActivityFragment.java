@@ -31,8 +31,7 @@ import java.util.Set;
 import static com.lynnik.flagquiz.MainActivity.CHOICES;
 import static com.lynnik.flagquiz.MainActivity.REGIONS;
 
-public class MainActivityFragment extends Fragment
-    implements View.OnClickListener {
+public class MainActivityFragment extends Fragment {
 
   private static final String TAG = "FlagQuiz Activity";
 
@@ -86,7 +85,7 @@ public class MainActivityFragment extends Fragment
     for (LinearLayout row : guessLinearLayouts) {
       for (int column = 0; column < row.getChildCount(); column++) {
         Button button = (Button) row.getChildAt(column);
-        button.setOnClickListener(this);
+        button.setOnClickListener(guessButtonListener);
       }
     }
 
@@ -94,11 +93,6 @@ public class MainActivityFragment extends Fragment
         getString(R.string.question, 1, FLAGS_IN_QUIZ));
 
     return v;
-  }
-
-  @Override
-  public void onClick(View view) {
-
   }
 
   public void updateGuessRows(SharedPreferences sharedPreferences) {
